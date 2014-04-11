@@ -92,6 +92,7 @@
      <Compile Include="Assets\Scripts\CameraLookAt.cs" />
      <Compile Include="Assets\Scripts\FireLaser.cs" />
      <Compile Include="Assets\Scripts\ShipControls.cs" />
+     <Compile Include="Assets\Scripts\Tidy.cs" />
      <Compile Include="Assets\Scripts\inControlManager.cs" />
      <None Include="Assets\space1\Note.txt" />
      <None Include="Assets\InControl\README\README.txt" />

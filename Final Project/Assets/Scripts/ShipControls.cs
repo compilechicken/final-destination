@@ -3,12 +3,10 @@ using System.Collections;
 using InControl;
 
 public class ShipControls : MonoBehaviour {
-
 	// Use this for initialization
 	void Start () {
 	
 	}
-	
 	// Update is called once per frame
 	void Update () {
 		//Yaw

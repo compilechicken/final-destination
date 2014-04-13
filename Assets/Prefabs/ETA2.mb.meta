@@ -1390,6 +1390,127 @@ ModelImporter:
     102768: transform97
     102770: transform98
     102772: transform99
+    102774: polySurface738
+    102776: transform630
+    102778: transform631
+    102780: transform632
+    102782: transform633
+    102784: transform634
+    102786: transform635
+    102788: transform636
+    102790: transform637
+    102792: transform638
+    102794: transform639
+    102796: transform640
+    102798: transform641
+    102800: transform642
+    102802: transform643
+    102804: transform644
+    102806: transform645
+    102808: transform646
+    102810: transform647
+    102812: transform648
+    102814: transform649
+    102816: transform650
+    102818: transform651
+    102820: transform652
+    102822: transform653
+    102824: transform654
+    102826: transform655
+    102828: transform656
+    102830: transform657
+    102832: transform658
+    102834: transform659
+    102836: transform660
+    102838: transform661
+    102840: transform662
+    102842: transform663
+    102844: transform664
+    102846: transform665
+    102848: transform666
+    102850: transform667
+    102852: transform668
+    102854: transform669
+    102856: transform670
+    102858: transform671
+    102860: transform672
+    102862: transform673
+    102864: transform674
+    102866: transform675
+    102868: transform676
+    102870: transform677
+    102872: transform678
+    102874: transform679
+    102876: transform680
+    102878: transform681
+    102880: transform682
+    102882: transform683
+    102884: transform684
+    102886: transform685
+    102888: transform686
+    102890: transform687
+    102892: transform688
+    102894: transform689
+    102896: transform690
+    102898: transform691
+    102900: transform692
+    102902: transform693
+    102904: transform694
+    102906: transform695
+    102908: transform696
+    102910: transform697
+    102912: transform698
+    102914: transform699
+    102916: transform700
+    102918: transform701
+    102920: transform702
+    102922: transform703
+    102924: transform704
+    102926: transform705
+    102928: transform706
+    102930: transform707
+    102932: transform708
+    102934: transform709
+    102936: transform710
+    102938: transform711
+    102940: transform712
+    102942: transform713
+    102944: transform714
+    102946: transform715
+    102948: transform716
+    102950: transform717
+    102952: transform718
+    102954: transform719
+    102956: transform720
+    102958: transform721
+    102960: transform722
+    102962: transform723
+    102964: transform724
+    102966: transform725
+    102968: transform726
+    102970: transform727
+    102972: transform728
+    102974: transform729
+    102976: transform730
+    102978: transform731
+    102980: transform732
+    102982: transform733
+    102984: transform734
+    102986: transform735
+    102988: transform736
+    102990: transform737
+    102992: transform738
+    102994: transform739
+    102996: transform740
+    102998: transform741
+    103000: transform742
+    103002: transform743
+    103004: transform744
+    103006: transform745
+    103008: transform746
+    103010: transform747
+    103012: transform748
+    103014: transform749
     400000: //RootNode
     400002: group1
     400004: pCube17
@@ -2777,6 +2898,127 @@ ModelImporter:
     402768: transform97
     402770: transform98
     402772: transform99
+    402774: polySurface738
+    402776: transform630
+    402778: transform631
+    402780: transform632
+    402782: transform633
+    402784: transform634
+    402786: transform635
+    402788: transform636
+    402790: transform637
+    402792: transform638
+    402794: transform639
+    402796: transform640
+    402798: transform641
+    402800: transform642
+    402802: transform643
+    402804: transform644
+    402806: transform645
+    402808: transform646
+    402810: transform647
+    402812: transform648
+    402814: transform649
+    402816: transform650
+    402818: transform651
+    402820: transform652
+    402822: transform653
+    402824: transform654
+    402826: transform655
+    402828: transform656
+    402830: transform657
+    402832: transform658
+    402834: transform659
+    402836: transform660
+    402838: transform661
+    402840: transform662
+    402842: transform663
+    402844: transform664
+    402846: transform665
+    402848: transform666
+    402850: transform667
+    402852: transform668
+    402854: transform669
+    402856: transform670
+    402858: transform671
+    402860: transform672
+    402862: transform673
+    402864: transform674
+    402866: transform675
+    402868: transform676
+    402870: transform677
+    402872: transform678
+    402874: transform679
+    402876: transform680
+    402878: transform681
+    402880: transform682
+    402882: transform683
+    402884: transform684
+    402886: transform685
+    402888: transform686
+    402890: transform687
+    402892: transform688
+    402894: transform689
+    402896: transform690
+    402898: transform691
+    402900: transform692
+    402902: transform693
+    402904: transform694
+    402906: transform695
+    402908: transform696
+    402910: transform697
+    402912: transform698
+    402914: transform699
+    402916: transform700
+    402918: transform701
+    402920: transform702
+    402922: transform703
+    402924: transform704
+    402926: transform705
+    402928: transform706
+    402930: transform707
+    402932: transform708
+    402934: transform709
+    402936: transform710
+    402938: transform711
+    402940: transform712
+    402942: transform713
+    402944: transform714
+    402946: transform715
+    402948: transform716
+    402950: transform717
+    402952: transform718
+    402954: transform719
+    402956: transform720
+    402958: transform721
+    402960: transform722
+    402962: transform723
+    402964: transform724
+    402966: transform725
+    402968: transform726
+    402970: transform727
+    402972: transform728
+    402974: transform729
+    402976: transform730
+    402978: transform731
+    402980: transform732
+    402982: transform733
+    402984: transform734
+    402986: transform735
+    402988: transform736
+    402990: transform737
+    402992: transform738
+    402994: transform739
+    402996: transform740
+    402998: transform741
+    403000: transform742
+    403002: transform743
+    403004: transform744
+    403006: transform745
+    403008: transform746
+    403010: transform747
+    403012: transform748
+    403014: transform749
     2300000: polySurface618
     2300002: polySurface619
     2300004: polySurface620
@@ -2897,6 +3139,7 @@ ModelImporter:
     2300234: polySurface735
     2300236: polySurface736
     2300238: polySurface737
+    2300240: polySurface738
     3300000: polySurface618
     3300002: polySurface619
     3300004: polySurface620
@@ -3017,6 +3260,7 @@ ModelImporter:
     3300234: polySurface735
     3300236: polySurface736
     3300238: polySurface737
+    3300240: polySurface738
     4300000: polySurface618
     4300002: polySurface619
     4300004: polySurface620
@@ -3137,6 +3381,7 @@ ModelImporter:
     4300234: polySurface735
     4300236: polySurface736
     4300238: polySurface737
+    4300240: polySurface738
     7400000: Take 001
     9500000: //RootNode
   materials:

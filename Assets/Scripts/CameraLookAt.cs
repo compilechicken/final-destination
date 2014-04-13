@@ -10,14 +10,10 @@ public class CameraLookAt : MonoBehaviour {
 	Quaternion wantedRotation;
 	bool smoothRotation = true;
 	public float rotationDamping = 10f;
-	
-	void Start() {
-		target = GameObject.FindWithTag("Player").transform;
-	}
-	
+
 	void Update() {
 
-		wantedPosition = target.TransformPoint (0, height, -distance);
+		wantedPosition = target.TransformPoint (0, height, distance);
 		transform.position = Vector3.Lerp (transform.position, wantedPosition, Time.deltaTime * damping);
 
 		if (smoothRotation)

@@ -28,7 +28,20 @@ public class ShipControls : MonoBehaviour {
 			}
 		} else {
 			// Debug mode, use keyboard controls.
-			// TODO: Add controls!
+			// Yaw
+			transform.Rotate(0, 100 * Input.GetAxis("mouse x") * Time.deltaTime, 0);
+
+			//Pitch
+			transform.Rotate(100 * Input.GetAxis("mouse y") * Time.deltaTime, 0, 0);
+
+			//Roll
+			if (Input.GetKey(KeyCode.Q)) {
+				transform.Rotate(0, 0, -250 * Time.deltaTime);
+			}
+			if (Input.GetKey(KeyCode.E)) {
+				transform.Rotate(0, 0, 250 * Time.deltaTime);
+			}
+
 		}
 
 

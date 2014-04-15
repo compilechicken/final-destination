@@ -32,6 +32,7 @@ public class FireLaser : MonoBehaviour {
 			Rigidbody shot = Instantiate(projectile, shotPos.position, shotPos.rotation) as Rigidbody;
 			shot.AddForce(shotPos.forward * shotForce);
 			time = 0;
+			audio.Play ();
 		}
 	}
 

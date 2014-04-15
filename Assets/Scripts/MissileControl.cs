@@ -14,11 +14,19 @@ public class MissileControl : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		// Zoom to target
-		Vector3 toTarget = target.position - transform.position;
-		rigidbody.AddForce(toTarget * acceleration * Time.deltaTime, ForceMode.Acceleration);
-		transform.LookAt(target.position);
+		// Turn to target
+		Vector3 toTarget = target.transform.position - transform.position;
+		toTarget.Normalize();
 
+		Vector3 rotationAxis = Vector3.Cross(transform.forward, toTarget);
+		// What is the angle to the target?
+		float angle = rotationAxis.magnitude;
+		angle = Mathf.Min(angle, 30);
+		angle *= 50;
+		rotationAxis.Normalize();
+		rigidbody.AddTorque(rotationAxis * angle, ForceMode.Acceleration);
+
+		rigidbody.maxAngularVelocity = 90f;
 	}
 
 }

@@ -30,7 +30,7 @@ public class FireMissile : MonoBehaviour {
 		}
 
 		if (shoot) {
-			GameObject missile = (Instantiate(projectile, shotPos.position, shotPos.rotation) as Rigidbody).gameObject;
+			GameObject missile = Instantiate(projectile, shotPos.position, shotPos.rotation) as GameObject;
 			MissileControl missileControl = missile.GetComponent<MissileControl>();
 			missileControl.target = target;
 			missileControl.enabled = true;

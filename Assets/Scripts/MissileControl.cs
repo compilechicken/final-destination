@@ -3,13 +3,13 @@ using System.Collections;
 
 public class MissileControl : MonoBehaviour {
 	public float acceleration;
-	public float maxSpeed;
+	public float maxVelocity;
 
 	public Transform target;
 
 	// Use this for initialization
 	void Start () {
-
+		rigidbody.maxAngularVelocity = 1f;
 	}
 
 	// Update is called once per frame
@@ -26,7 +26,11 @@ public class MissileControl : MonoBehaviour {
 		rotationAxis.Normalize();
 		rigidbody.AddTorque(rotationAxis * angle, ForceMode.Acceleration);
 
-		rigidbody.maxAngularVelocity = 90f;
+		rigidbody.AddForce(transform.forward * acceleration * Time.deltaTime, ForceMode.Acceleration);
+		if (rigidbody.velocity.magnitude > maxVelocity) {
+			rigidbody.velocity.Normalize();
+			rigidbody.velocity *= maxVelocity;
+		}
 	}
 
 }

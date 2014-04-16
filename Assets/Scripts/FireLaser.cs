@@ -4,7 +4,8 @@ using InControl;
 
 public class FireLaser : MonoBehaviour {
 	public Rigidbody projectile;
-	public Transform shotPos;
+	public Transform shotPos1;
+	public Transform shotPos2;
 	public float shotForce = 1000f;
 	float time = 0;
 	public float delay;
@@ -29,8 +30,10 @@ public class FireLaser : MonoBehaviour {
 		}
 
 		if (shootStandardWeapon) {
-			Rigidbody shot = Instantiate(projectile, shotPos.position, shotPos.rotation) as Rigidbody;
-			shot.AddForce(shotPos.forward * shotForce);
+			Rigidbody shot1 = Instantiate(projectile, shotPos1.position, shotPos1.rotation) as Rigidbody;
+			shot1.AddForce(shotPos1.forward * shotForce);
+			Rigidbody shot2 = Instantiate(projectile, shotPos2.position, shotPos2.rotation) as Rigidbody;
+			shot2.AddForce(shotPos2.forward * shotForce);
 			time = 0;
 			audio.Play ();
 		}

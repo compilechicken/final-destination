@@ -46,6 +46,6 @@ public class ShipControls : MonoBehaviour {
 
 
 		//Move forward constantly
-		transform.position += -1 * transform.forward * 5f * Time.deltaTime;
+		transform.position += -1 * transform.forward * 50f * Time.deltaTime;
 	}
 }

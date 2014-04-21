@@ -49,23 +49,22 @@ public class Ship : MonoBehaviour {
 		HealthStyle.normal.background = HealthTexture;
 		HealthStyle.alignment = TextAnchor.MiddleCenter;
 
-
-
-		StartCoroutine(Shake());
+		StartCoroutine(ShakeCoroutine());
 	}
 
 	// Update is called once per frame
 	void Update () {
-		AdjustHealth(0);
-		if (Input.GetKeyDown(KeyCode.Space)) {
-			Vector3 shake = 0.5f * (Quaternion.AngleAxis(Random.value * 360, Vector3.forward) * Vector3.right);
-			ShakeTime shakeTime = new ShakeTime(shake, 1);
-			shakes.AddLast(shakeTime);
-			AdjustHealth (-10);
-		}
+
 	}
 
-	IEnumerator Shake() {
+	// Triggers a camera shake
+	public void Shake() {
+		Vector3 shake = 0.5f * (Quaternion.AngleAxis(Random.value * 360, Vector3.forward) * Vector3.right);
+		ShakeTime shakeTime = new ShakeTime(shake, 1);
+		shakes.AddLast(shakeTime);
+	}
+
+	IEnumerator ShakeCoroutine() {
 		while (true) {
 			model.localPosition = Vector3.zero;
 
@@ -98,7 +97,7 @@ public class Ship : MonoBehaviour {
 		GUI.backgroundColor = Color.red;
 		GUI.Box(new Rect(HealthBarX, HealthBarY, HealthBarLength, 20),CurrentHealth + "/" + MaxHealth, HealthStyle);
 	}
-	void AdjustHealth( float x)
+	public void AdjustHealth( float x)
 	{
 		//Prevent current health from being negative
 		CurrentHealth += x;

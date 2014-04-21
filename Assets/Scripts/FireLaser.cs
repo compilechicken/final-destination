@@ -34,6 +34,11 @@ public class FireLaser : MonoBehaviour {
 			shot1.AddForce(shotPos1.forward * shotForce);
 			Rigidbody shot2 = Instantiate(projectile, shotPos2.position, shotPos2.rotation) as Rigidbody;
 			shot2.AddForce(shotPos2.forward * shotForce);
+
+			foreach (Collider modelCollider in GetComponent<Ship>().model.GetComponents<Collider>()) {
+				Physics.IgnoreCollision(modelCollider, shot1.collider);
+				Physics.IgnoreCollision(modelCollider, shot2.collider);
+			}
 			time = 0;
 			audio.Play ();
 		}

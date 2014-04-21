@@ -54,7 +54,8 @@ public class Ship : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-
+		// Triggers a redraw for the current health
+		AdjustHealth(0);
 	}
 
 	// Triggers a camera shake

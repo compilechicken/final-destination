@@ -7,14 +7,19 @@ public class Ship : MonoBehaviour {
 
 	//Health And Shields Variables
 	public float MaxHealth;
-	//public float MaxShields;
+	public float MaxShields;
 	float CurrentHealth;
-	//float CurrentShields;
+	float CurrentShields;
 
 	//OnGUI variables
 	float HealthBarLength;
+	float ShieldBarLength;
 	public float HealthBarX;
 	public float HealthBarY;
+	public float ShieldBarX;
+	public float ShieldBarY;
+	//The Health and Shield bars will both use the HealthStyle and Texture
+	//The texture is just white pixels that are tinted later using GUI.backgroundcolor = <Desired color>;
 	GUIStyle HealthStyle;
 	Texture2D HealthTexture;
 
@@ -40,7 +45,7 @@ public class Ship : MonoBehaviour {
 	void Start () {
 		//OnGUI Initializations
 		CurrentHealth = MaxHealth;
-		//CurrentShields = MaxShields;
+		CurrentShields = MaxShields;
 		HealthStyle = new GUIStyle();
 		HealthTexture = new Texture2D(1,1);
 		HealthBarLength = Screen.width/2;
@@ -49,20 +54,26 @@ public class Ship : MonoBehaviour {
 		HealthStyle.normal.background = HealthTexture;
 		HealthStyle.alignment = TextAnchor.MiddleCenter;
 
-
+		//Call AdjustHealth once to initialize bar locations
+		AdjustHealth(0);
 
 		StartCoroutine(Shake());
 	}
 
-	// Update is called once per frame
-	void Update () {
-		AdjustHealth(0);
-		if (Input.GetKeyDown(KeyCode.Space)) {
+	void OnTriggerEnter(Collider col)
+	{
+		if(col.gameObject.tag == "Laser")
+		{
 			Vector3 shake = 0.5f * (Quaternion.AngleAxis(Random.value * 360, Vector3.forward) * Vector3.right);
 			ShakeTime shakeTime = new ShakeTime(shake, 1);
 			shakes.AddLast(shakeTime);
 			AdjustHealth (-10);
 		}
+	}
+
+	// Update is called once per frame
+	void Update () {
+
 	}
 
 	IEnumerator Shake() {
@@ -97,11 +108,27 @@ public class Ship : MonoBehaviour {
 		//Draw the Health Bar
 		GUI.backgroundColor = Color.red;
 		GUI.Box(new Rect(HealthBarX, HealthBarY, HealthBarLength, 20),CurrentHealth + "/" + MaxHealth, HealthStyle);
+
+		//Draw the Shield Bar
+		GUI.backgroundColor = Color.cyan;
+		GUI.Box(new Rect(ShieldBarX, ShieldBarY, ShieldBarLength, 20),CurrentShields + "/" + MaxShields, HealthStyle);
+
 	}
-	void AdjustHealth( float x)
+	public void AdjustHealth( float x)
 	{
 		//Prevent current health from being negative
-		CurrentHealth += x;
+		if(CurrentShields == 0)
+		{
+			CurrentHealth += x;
+		}
+		CurrentShields += x;
+		//Prevent shields from going negative
+		if(CurrentShields < 1)
+		{
+			CurrentShields = 0;
+		}
+
+		//Prevent health from going negative
 		if(CurrentHealth < 1)
 		{
 			CurrentHealth = 0;
@@ -119,15 +146,27 @@ public class Ship : MonoBehaviour {
 			MaxHealth = 1;
 		}
 
-		//Update health bar length
+		//Update health and shield bar lengths
 		HealthBarLength = (Screen.width/2) * (CurrentHealth/MaxHealth);
+		ShieldBarLength = (Screen.width/2) * (CurrentShields/MaxShields);
 
-		//Health Bar Location based on player
+		//health bar x value, always centered
+		HealthBarX = Screen.width/2 - HealthBarLength/2;
+		ShieldBarX = Screen.width/2 - ShieldBarLength/2;
+
+		//Health Bar height based on player
+		//Player 1 bars
 		if(Player == 1)
 		{
 			HealthBarY = 20;
+			ShieldBarY = 50;
 		}
-		else HealthBarY = Screen.height/2 + 20;
+		//Player 2 bars
+		else 
+		{
+			HealthBarY = Screen.height/2 + 20;
+			ShieldBarY = Screen.height/2 + 50;
+		}
 	}
 	/*
 	void OnCollisionEnter(Collision col)

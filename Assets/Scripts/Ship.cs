@@ -7,7 +7,7 @@ public class Ship : MonoBehaviour {
 
 	//Health And Shields Variables
 	public float MaxHealth;
-	public float MaxShields;
+	public float MaxShields = 50;
 	float CurrentHealth;
 	float CurrentShields;
 
@@ -18,6 +18,8 @@ public class Ship : MonoBehaviour {
 	public float HealthBarY;
 	public float ShieldBarX;
 	public float ShieldBarY;
+	public float BoostX;
+	public float BoostY;
 	//The Health and Shield bars will both use the HealthStyle and Texture
 	//The texture is just white pixels that are tinted later using GUI.backgroundcolor = <Desired color>;
 	GUIStyle HealthStyle;
@@ -181,22 +183,7 @@ public class Ship : MonoBehaviour {
 			ShieldBarY = Screen.height/2 + 50;
 		}
 	}
-	/*
-	void OnCollisionEnter(Collision col)
-	{
-		if(col.gameObject.tag == "Laser")
-		{
-			health -= <laser value>;
-		}
 
-		if(col.gameObject.tag == "Missile")
-		{
-			health -= <missile value>;
-		}
-
-		//Beam will be a raycast check
-	}
-	*/
 
 
 

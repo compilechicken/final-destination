@@ -33,8 +33,16 @@ public class ShipControls : MonoBehaviour {
 			{
 				Boost = true;
 				BoostAmt -= 2;
+				if(BoostAmt < 0)
+					BoostAmt = 0;
 			}
-			else {Boost = false; BoostAmt++;}
+			else 
+			{
+				Boost = false; 
+				BoostAmt++;
+				if(BoostAmt > 100)
+					BoostAmt = 100;
+			}
 			//End Boost
 
 		} else {
@@ -56,8 +64,16 @@ public class ShipControls : MonoBehaviour {
 			{
 				Boost = true;
 				BoostAmt -= 2;
+				if(BoostAmt < 0)
+					BoostAmt = 0;
 			}
-			else {Boost = false; BoostAmt++;}
+			else 
+			{
+				Boost = false; 
+				BoostAmt++;
+				if(BoostAmt > 100)
+					BoostAmt = 100;
+			}
 
 		}
 

@@ -35,6 +35,10 @@ public class FireMissile : MonoBehaviour {
 			missileControl.target = target;
 			missileControl.enabled = true;
 			time = 0;
+
+			foreach (Collider modelCollider in GetComponent<Ship>().model.GetComponents<Collider>()) {
+				Physics.IgnoreCollision(modelCollider, missile.collider);
+			}
 		}
 	}
 

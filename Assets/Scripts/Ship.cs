@@ -54,10 +54,11 @@ public class Ship : MonoBehaviour {
 		HealthStyle.normal.background = HealthTexture;
 		HealthStyle.alignment = TextAnchor.MiddleCenter;
 
+
 		//Call AdjustHealth once to initialize bar locations
 		AdjustHealth(0);
 
-		StartCoroutine(Shake());
+		StartCoroutine(ShakeCoroutine());
 	}
 
 	void OnTriggerEnter(Collider col)
@@ -71,12 +72,24 @@ public class Ship : MonoBehaviour {
 		}
 	}
 
+
+
+
 	// Update is called once per frame
 	void Update () {
-
+		// Triggers a redraw for the current health
+		AdjustHealth(0);
 	}
 
-	IEnumerator Shake() {
+	// Triggers a camera shake
+	public void Shake() {
+		Vector3 shake = 0.5f * (Quaternion.AngleAxis(Random.value * 360, Vector3.forward) * Vector3.right);
+		ShakeTime shakeTime = new ShakeTime(shake, 1);
+		shakes.AddLast(shakeTime);
+	}
+
+	IEnumerator ShakeCoroutine() {
+
 		while (true) {
 			model.localPosition = Vector3.zero;
 

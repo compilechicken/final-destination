@@ -10,7 +10,7 @@ public class ShipControls : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		// Are controllers plugged in?
-		if (InputManager.Devices.Count > 0) {
+		if (gameObject.GetComponent<Ship>().Player == 2) {
 			//Yaw
 			if(InputManager.Devices[0].LeftStickX.IsNotNull)
 			{
@@ -46,6 +46,6 @@ public class ShipControls : MonoBehaviour {
 
 
 		//Move forward constantly
-		transform.position += -1 * transform.forward * 5f * Time.deltaTime;
+		transform.position += -1 * transform.forward * 50f * Time.deltaTime;
 	}
 }

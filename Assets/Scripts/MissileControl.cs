@@ -33,4 +33,16 @@ public class MissileControl : MonoBehaviour {
 		}
 	}
 
+	void OnTriggerEnter(Collider other){
+		if (other.transform.parent == null) {
+			return;
+		}
+		Ship ship = other.transform.parent.GetComponent<Ship>();
+		if (ship != null) {
+			ship.AdjustHealth(-30);
+			ship.Shake();
+			Destroy(gameObject);
+		}
+	}
+
 }

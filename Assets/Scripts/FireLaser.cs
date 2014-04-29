@@ -21,7 +21,7 @@ public class FireLaser : MonoBehaviour {
 		time += Time.deltaTime;
 
 		// Are controllers plugged in?
-		if (gameObject.GetComponent<Ship>().Player == 2) {
+		if (InputManager.Devices.Count > 0) {
 			shootStandardWeapon = InputManager.Devices[0].RightTrigger.IsPressed && time > delay;
 		} else {
 			// Debug mode, use keyboard controls.

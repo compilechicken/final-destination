@@ -2,9 +2,10 @@
 using System.Collections;
 
 public class BoundaryControl : MonoBehaviour {
-	float distanceToDisplay = 500;
+	float distanceToDisplay = 200;
 	Transform[] players = new Transform[2];
 	string PLAYER_TAG = "Player";
+	int BOUNDARY_LAYER = 1 << 8;
 
 	void Start() {
 		GameObject[] players = GameObject.FindGameObjectsWithTag(PLAYER_TAG);
@@ -14,11 +15,11 @@ public class BoundaryControl : MonoBehaviour {
 	}
 
 	void Update() {
-		float closest = Mathf.Infinity;
+		bool doRender = false;
 		foreach (Transform player in players) {
-			closest = Mathf.Min((player.position - transform.position).magnitude, closest);
+			doRender |= Physics.Raycast(player.position, -transform.up, distanceToDisplay, BOUNDARY_LAYER);
 		}
 
-		renderer.enabled = closest < distanceToDisplay;
+		renderer.enabled = doRender;
 	}
 }

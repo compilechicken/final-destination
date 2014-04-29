@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Rotating : MonoBehaviour {
 
+	public float speed;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -10,6 +12,6 @@ public class Rotating : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		transform.Rotate (Time.deltaTime, 0, 0);
+		transform.Rotate (Time.deltaTime * speed, 0, 0);
 	}
 }

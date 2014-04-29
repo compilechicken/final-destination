@@ -169,7 +169,7 @@ public class Ship : MonoBehaviour {
 
 		//Health Bar height based on player
 		//Player 1 bars
-		if(Player == 1)
+		if(Player == 0)
 		{
 			HealthBarY = 20;
 			ShieldBarY = 50;

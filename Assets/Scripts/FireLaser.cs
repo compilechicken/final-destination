@@ -10,9 +10,11 @@ public class FireLaser : MonoBehaviour {
 	float time = 0;
 	public float delay;
 
+	Ship ship;
+
 	// Use this for initialization
 	void Start () {
-
+		ship = GetComponent<Ship>();
 	}
 
 	// Update is called once per frame
@@ -20,9 +22,9 @@ public class FireLaser : MonoBehaviour {
 		bool shootStandardWeapon = false;
 		time += Time.deltaTime;
 
-		// Are controllers plugged in?
-		if (InputManager.Devices.Count > 0) {
-			shootStandardWeapon = InputManager.Devices[0].RightTrigger.IsPressed && time > delay;
+		// Are enough controllers plugged in?
+		if (ship.Player < InputManager.Devices.Count) {
+			shootStandardWeapon = InputManager.Devices[ship.Player].RightTrigger.IsPressed && time > delay;
 		} else {
 			// Debug mode, use keyboard controls.
 			// Left click: shoot standard weapon

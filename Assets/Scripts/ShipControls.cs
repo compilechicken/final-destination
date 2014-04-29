@@ -3,28 +3,31 @@ using System.Collections;
 using InControl;
 
 public class ShipControls : MonoBehaviour {
+	Ship ship;
+
 	// Use this for initialization
 	void Start () {
-	
+		ship = GetComponent<Ship>();
 	}
+
 	// Update is called once per frame
 	void Update () {
-		// Are controllers plugged in?
-		if (InputManager.Devices.Count > 0) {
+		// If we don't have enough controllers, then use the keyboard
+		if (ship.Player < InputManager.Devices.Count) {
 			//Yaw
-			if(InputManager.Devices[0].LeftStickX.IsNotNull)
+			if(InputManager.Devices[ship.Player].LeftStickX.IsNotNull)
 			{
-				transform.Rotate(0,InputManager.Devices[0].LeftStickX.Value,0);
+				transform.Rotate(0,InputManager.Devices[ship.Player].LeftStickX.Value,0);
 			}
 			//Pitch
-			if(InputManager.Devices[0].LeftStickY.IsNotNull)
+			if(InputManager.Devices[ship.Player].LeftStickY.IsNotNull)
 			{
-				transform.Rotate(-1*InputManager.Devices[0].LeftStickY.Value,0,0);
+				transform.Rotate(-1*InputManager.Devices[ship.Player].LeftStickY.Value,0,0);
 			}
 			//Roll
-			if(InputManager.Devices[0].RightStickX.IsNotNull)
+			if(InputManager.Devices[ship.Player].RightStickX.IsNotNull)
 			{
-				transform.Rotate(0,0,InputManager.Devices[0].RightStickX.Value);
+				transform.Rotate(0,0,InputManager.Devices[ship.Player].RightStickX.Value);
 			}
 		} else {
 			// Debug mode, use keyboard controls.

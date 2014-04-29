@@ -8,11 +8,9 @@ public class SceneControl : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.Z)) {
 			Application.LoadLevel (0);
 		}
-		if (Input.GetKeyDown (KeyCode.X)) {
-			Application.LoadLevel (1);
-		}
+
 		if (Input.GetKeyDown (KeyCode.C)) {
-			Application.LoadLevel (2);
+			Application.LoadLevel (1);
 		}
 	}
 }

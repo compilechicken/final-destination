@@ -10,7 +10,6 @@ public class Ship : MonoBehaviour {
 	public float MaxShields;
 	float CurrentHealth;
 	float CurrentShields;
-	float BoostAmt;
 
 	//OnGUI variables
 	float HealthBarLength;
@@ -19,9 +18,6 @@ public class Ship : MonoBehaviour {
 	public float HealthBarY;
 	public float ShieldBarX;
 	public float ShieldBarY;
-	public float BoostX;
-	public float BoostY;
-	float BoostBarLength;
 	//The Health and Shield bars will both use the HealthStyle and Texture
 	//The texture is just white pixels that are tinted later using GUI.backgroundcolor = <Desired color>;
 	GUIStyle HealthStyle;
@@ -130,10 +126,6 @@ public class Ship : MonoBehaviour {
 		GUI.backgroundColor = Color.cyan;
 		GUI.Box(new Rect(ShieldBarX, ShieldBarY, ShieldBarLength, 20),CurrentShields + "/" + MaxShields, HealthStyle);
 
-		//Draw the Boost Bar
-		GUI.backgroundColor = Color.yellow;
-		GUI.Box(new Rect(BoostX, BoostY, BoostBarLength, 10),"",HealthStyle);
-
 	}
 	public void AdjustHealth( float x)
 	{
@@ -167,36 +159,44 @@ public class Ship : MonoBehaviour {
 			MaxHealth = 1;
 		}
 
-		//Update Boost Bar
-		BoostAmt = gameObject.GetComponent<ShipControls>().BoostAmt;
-
 		//Update health and shield bar lengths
 		HealthBarLength = (Screen.width/2) * (CurrentHealth/MaxHealth);
 		ShieldBarLength = (Screen.width/2) * (CurrentShields/MaxShields);
-		BoostBarLength = (Screen.width/2) * (BoostAmt/100);
 
 		//health bar x value, always centered
 		HealthBarX = Screen.width/2 - HealthBarLength/2;
 		ShieldBarX = Screen.width/2 - ShieldBarLength/2;
-		BoostX = Screen.width/2 - BoostBarLength/2;
 
 		//Health Bar height based on player
 		//Player 1 bars
-		if(Player == 1)
+		if(Player == 0)
 		{
 			HealthBarY = 20;
 			ShieldBarY = 50;
-			BoostY = 80;
 		}
 		//Player 2 bars
 		else 
 		{
 			HealthBarY = Screen.height/2 + 20;
 			ShieldBarY = Screen.height/2 + 50;
-			BoostY = Screen.height/2 + 80;
 		}
 	}
+	/*
+	void OnCollisionEnter(Collision col)
+	{
+		if(col.gameObject.tag == "Laser")
+		{
+			health -= <laser value>;
+		}
 
+		if(col.gameObject.tag == "Missile")
+		{
+			health -= <missile value>;
+		}
+
+		//Beam will be a raycast check
+	}
+	*/
 
 
 

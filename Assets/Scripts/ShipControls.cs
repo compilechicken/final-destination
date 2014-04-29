@@ -34,7 +34,10 @@ public class ShipControls : MonoBehaviour {
 				Boost = true;
 				BoostAmt -= 2;
 				if(BoostAmt < 0)
+				{
 					BoostAmt = 0;
+					Boost = false;
+				}
 			}
 			else 
 			{

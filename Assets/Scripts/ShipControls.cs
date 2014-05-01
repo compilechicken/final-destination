@@ -3,50 +3,38 @@ using System.Collections;
 using InControl;
 
 public class ShipControls : MonoBehaviour {
+	Ship ship;
+	bool brake = false;
+	bool boost = false;
+
 	// Use this for initialization
-	public bool Boost = false;
-	public float BoostAmt = 100f;
 	void Start () {
-	
+		ship = GetComponent<Ship>();
 	}
+
 	// Update is called once per frame
 	void Update () {
-		// Are controllers plugged in?
-		if (gameObject.GetComponent<Ship>().Player == 2 && InputManager.Devices.Count > 0) {
+		// If we don't have enough controllers, then use the keyboard
+		if (ship.Player < InputManager.Devices.Count) {
 			//Yaw
-			if(InputManager.Devices[0].LeftStickX.IsNotNull)
+			if(InputManager.Devices[ship.Player].LeftStickX.IsNotNull)
 			{
-				transform.Rotate(0,InputManager.Devices[0].LeftStickX.Value,0);
+				transform.Rotate(0,InputManager.Devices[ship.Player].LeftStickX.Value,0);
 			}
 			//Pitch
-			if(InputManager.Devices[0].LeftStickY.IsNotNull)
+			if(InputManager.Devices[ship.Player].LeftStickY.IsNotNull)
 			{
-				transform.Rotate(-1*InputManager.Devices[0].LeftStickY.Value,0,0);
+				transform.Rotate(-1*InputManager.Devices[ship.Player].LeftStickY.Value,0,0);
 			}
 			//Roll
-			if(InputManager.Devices[0].RightStickX.IsNotNull)
+			if(InputManager.Devices[ship.Player].RightStickX.IsNotNull)
 			{
-				transform.Rotate(0,0,InputManager.Devices[0].RightStickX.Value);
+				transform.Rotate(0,0,InputManager.Devices[ship.Player].RightStickX.Value);
 			}
-			//Boost
-			if(InputManager.Devices[0].RightStickButton.IsPressed)
-			{
-				Boost = true;
-				BoostAmt -= 2;
-				if(BoostAmt < 0)
-				{
-					BoostAmt = 0;
-					Boost = false;
-				}
-			}
-			else 
-			{
-				Boost = false; 
-				BoostAmt++;
-				if(BoostAmt > 100)
-					BoostAmt = 100;
-			}
-			//End Boost
+
+			boost = InputManager.Devices[ship.Player].LeftStickButton.IsPressed;
+	
+			brake = InputManager.Devices[ship.Player].Action2.IsPressed;
 
 		} else {
 			// Debug mode, use keyboard controls.
@@ -58,33 +46,35 @@ public class ShipControls : MonoBehaviour {
 
 			//Roll
 			if (Input.GetKey(KeyCode.Q)) {
-				transform.Rotate(0, 0, -75 * Time.deltaTime);
+				transform.Rotate(0, 0, -250 * Time.deltaTime);
 			}
 			if (Input.GetKey(KeyCode.E)) {
-				transform.Rotate(0, 0, 75 * Time.deltaTime);
+				transform.Rotate(0, 0, 250 * Time.deltaTime);
 			}
-			if(Input.GetKey (KeyCode.Space))
+			if(Input.GetKey(KeyCode.Space))
 			{
-				Boost = true;
-				BoostAmt -= 2;
-				if(BoostAmt < 0)
-					BoostAmt = 0;
+				boost = true;
 			}
-			else 
+			if(Input.GetKey(KeyCode.LeftShift))
 			{
-				Boost = false; 
-				BoostAmt++;
-				if(BoostAmt > 100)
-					BoostAmt = 100;
+				brake = true;
 			}
-
+			else
+			{
+				boost = false;
+				brake = false;
+			}
 		}
 
 
 		//Move forward constantly
-		if(Boost == true)
+		if(boost == true)
 		{
-			transform.position += -1 * transform.forward * 75f * Time.deltaTime;
+			transform.position += -1 * transform.forward * 95f * Time.deltaTime;
+		}
+		else if(brake == true)
+		{
+			transform.position += -1 * transform.forward * 5f * Time.deltaTime;
 		}
 		else transform.position += -1 * transform.forward * 50f * Time.deltaTime;
 	}

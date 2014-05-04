@@ -6,6 +6,7 @@ public class BoundaryControl : MonoBehaviour {
 	Transform[] players = new Transform[2];
 	string PLAYER_TAG = "Player";
 	int BOUNDARY_LAYER = 1 << 8;
+	public float DamagePerSecond = 10;
 
 	void Start() {
 		GameObject[] players = GameObject.FindGameObjectsWithTag(PLAYER_TAG);
@@ -21,5 +22,17 @@ public class BoundaryControl : MonoBehaviour {
 		}
 
 		renderer.enabled = doRender;
+	}
+
+	void OnTriggerStay(Collider other) {
+		// The rigidbodies for ships are placed on their parents.
+		if (other.transform.parent == null) {
+			return;
+		}
+
+		Ship ship = other.transform.parent.GetComponent<Ship>();
+		if (ship != null) {
+			ship.AdjustHealth(-DamagePerSecond * Time.deltaTime);
+		}
 	}
 }

@@ -18,10 +18,10 @@ public class CameraLookAt : MonoBehaviour {
 
 		if (smoothRotation)
 		{
-			wantedRotation = Quaternion.LookRotation(target.position - transform.position, target.up);
+			wantedRotation = Quaternion.LookRotation((target.position + 5 * transform.up) - transform.position, target.up);
 			transform.rotation = Quaternion.Slerp (transform.rotation, wantedRotation, Time.deltaTime * rotationDamping);
+		} else {
+			transform.LookAt(target, target.up);
 		}
-
-		else transform.LookAt(target, target.up);
 	}
 }

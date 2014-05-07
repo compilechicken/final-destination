@@ -7,7 +7,7 @@ public class Ship : MonoBehaviour {
 
 	//Health Variables
 	public float MaxHealth;
-	float CurrentHealth;
+	public float CurrentHealth;
 
 
 	//OnGUI variables

@@ -9,7 +9,7 @@ public class LaserControl : MonoBehaviour {
 		}
 		Ship ship = other.transform.parent.GetComponent<Ship>();
 		if (ship != null) {
-			ship.AdjustHealth(-10);
+			ship.AdjustHealth(-5);
 			ship.Shake();
 			Destroy(gameObject);
 		}

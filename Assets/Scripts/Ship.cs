@@ -1,25 +1,19 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
 public class Ship : MonoBehaviour {
 	public int Player;
 
-	//Health And Shields Variables
+	//Health Variables
 	public float MaxHealth;
-	public float MaxShields;
 	float CurrentHealth;
-	float CurrentShields;
+
 
 	//OnGUI variables
 	float HealthBarLength;
-	float ShieldBarLength;
 	public float HealthBarX;
 	public float HealthBarY;
-	public float ShieldBarX;
-	public float ShieldBarY;
-	//The Health and Shield bars will both use the HealthStyle and Texture
-	//The texture is just white pixels that are tinted later using GUI.backgroundcolor = <Desired color>;
 	GUIStyle HealthStyle;
 	Texture2D HealthTexture;
 
@@ -45,7 +39,6 @@ public class Ship : MonoBehaviour {
 	void Start () {
 		//OnGUI Initializations
 		CurrentHealth = MaxHealth;
-		CurrentShields = MaxShields;
 		HealthStyle = new GUIStyle();
 		HealthTexture = new Texture2D(1,1);
 		HealthBarLength = Screen.width/2;
@@ -121,26 +114,10 @@ public class Ship : MonoBehaviour {
 		//Draw the Health Bar
 		GUI.backgroundColor = Color.red;
 		GUI.Box(new Rect(HealthBarX, HealthBarY, HealthBarLength, 20),CurrentHealth + "/" + MaxHealth, HealthStyle);
-
-		//Draw the Shield Bar
-		GUI.backgroundColor = Color.cyan;
-		GUI.Box(new Rect(ShieldBarX, ShieldBarY, ShieldBarLength, 20),CurrentShields + "/" + MaxShields, HealthStyle);
-
 	}
 	public void AdjustHealth( float x)
 	{
-		//Prevent current health from being negative
-		if(CurrentShields == 0)
-		{
-			CurrentHealth += x;
-		}
-		CurrentShields += x;
-		//Prevent shields from going negative
-		if(CurrentShields < 1)
-		{
-			CurrentShields = 0;
-		}
-
+		CurrentHealth += x;
 		//Prevent health from going negative
 		if(CurrentHealth < 1)
 		{
@@ -159,44 +136,25 @@ public class Ship : MonoBehaviour {
 			MaxHealth = 1;
 		}
 
-		//Update health and shield bar lengths
+		//Update health bar length
 		HealthBarLength = (Screen.width/2) * (CurrentHealth/MaxHealth);
-		ShieldBarLength = (Screen.width/2) * (CurrentShields/MaxShields);
 
 		//health bar x value, always centered
 		HealthBarX = Screen.width/2 - HealthBarLength/2;
-		ShieldBarX = Screen.width/2 - ShieldBarLength/2;
 
 		//Health Bar height based on player
-		//Player 1 bars
+		//Player 1 bar
 		if(Player == 0)
 		{
 			HealthBarY = 20;
-			ShieldBarY = 50;
 		}
-		//Player 2 bars
+		//Player 2 bar
 		else 
 		{
 			HealthBarY = Screen.height/2 + 20;
-			ShieldBarY = Screen.height/2 + 50;
 		}
 	}
-	/*
-	void OnCollisionEnter(Collision col)
-	{
-		if(col.gameObject.tag == "Laser")
-		{
-			health -= <laser value>;
-		}
 
-		if(col.gameObject.tag == "Missile")
-		{
-			health -= <missile value>;
-		}
-
-		//Beam will be a raycast check
-	}
-	*/
 
 
 

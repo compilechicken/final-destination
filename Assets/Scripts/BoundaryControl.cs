@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class BoundaryControl : MonoBehaviour {
-	float distanceToDisplay = 200;
+	float distanceToDisplay = 400;
 	Transform[] players = new Transform[2];
 	string PLAYER_TAG = "Player";
 	int BOUNDARY_LAYER = 1 << 8;
